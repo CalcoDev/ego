@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://jfeunt6reo8k"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_km3pn"]
+[ext_resource type="Texture2D" uid="uid://ciop3f8u0cen5" path="res://assets/images/player/player_anim.png" id="1_qog5f"]
+[ext_resource type="PackedScene" uid="uid://cykwycgukqyjo" path="res://scenes/components/footstep_comp/footstep_component.tscn" id="3_hvcx7"]
+[ext_resource type="PackedScene" uid="uid://bq6b2tlemub4g" path="res://scenes/objects/footsteps/footstep.tscn" id="4_np5lk"]
+[ext_resource type="Script" path="res://global/misc/interactor_component.gd" id="5_akmjc"]
+[ext_resource type="Texture2D" uid="uid://cphlfjjycs1eu" path="res://assets/images/particles/interctor_vis.png" id="6_lkkn2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiyhn"]
+atlas = ExtResource("1_qog5f")
+region = Rect2(0, 0, 24, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps6y7"]
+atlas = ExtResource("1_qog5f")
+region = Rect2(24, 0, 24, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20ah5"]
+atlas = ExtResource("1_qog5f")
+region = Rect2(48, 0, 24, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q1lr"]
+atlas = ExtResource("1_qog5f")
+region = Rect2(72, 0, 24, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5j7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiyhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps6y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20ah5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q1lr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rq1lk"]
+size = Vector2(12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vif7e"]
+size = Vector2(20, 16)
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 2
+script = ExtResource("1_km3pn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_k5j7x")
+autoplay = "default"
+frame_progress = 0.291762
+offset = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rq1lk")
+
+[node name="FootstepComponent" parent="." instance=ExtResource("3_hvcx7")]
+distance = 20.0
+footstep_scene = ExtResource("4_np5lk")
+
+[node name="InteractorComponent" type="Area2D" parent="."]
+script = ExtResource("5_akmjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractorComponent"]
+position = Vector2(10, -8)
+shape = SubResource("RectangleShape2D_vif7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractorComponent/CollisionShape2D"]
+position = Vector2(7, 0)
+texture = ExtResource("6_lkkn2")

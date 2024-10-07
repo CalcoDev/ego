@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0nht45wlpi36"]
+
+[ext_resource type="Texture2D" uid="uid://ciutbxqo5msvw" path="res://assets/images/particles/light_tile.png" id="1_1lybd"]
+
+[node name="TileLight" type="PointLight2D"]
+blend_mode = 2
+texture = ExtResource("1_1lybd")

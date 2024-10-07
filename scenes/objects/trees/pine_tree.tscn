@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://6ho7vfyvupy4"]
+
+[ext_resource type="Texture2D" uid="uid://mi0a6qu86y5n" path="res://assets/images/pine_tree/pine_tree.png" id="1_h5iv4"]
+[ext_resource type="Script" path="res://scenes/objects/trees/pine_tree.gd" id="1_jxsxa"]
+[ext_resource type="Script" path="res://scenes/components/random_start_frame/random_sprite_frame.gd" id="2_owujx"]
+[ext_resource type="Script" path="res://global/autoload/dialogue/dialogue_interaction.gd" id="3_ceq68"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgvxf"]
+atlas = ExtResource("1_h5iv4")
+region = Rect2(0, 0, 43, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arbkq"]
+atlas = ExtResource("1_h5iv4")
+region = Rect2(43, 0, 43, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qqqi"]
+atlas = ExtResource("1_h5iv4")
+region = Rect2(86, 0, 43, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3qt"]
+atlas = ExtResource("1_h5iv4")
+region = Rect2(129, 0, 43, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dju7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgvxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arbkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qqqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi3qt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78bxc"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j801k"]
+size = Vector2(16, 28)
+
+[node name="PineTree" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_jxsxa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+sprite_frames = SubResource("SpriteFrames_dju7x")
+autoplay = "default"
+frame = 2
+frame_progress = 0.247845
+offset = Vector2(0, -18)
+script = ExtResource("2_owujx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_78bxc")
+debug_color = Color(0, 0.6, 0.701961, 0.117647)
+
+[node name="DialogueInteraction" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_ceq68")
+id = "tree"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
+visible = false
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_j801k")
+debug_color = Color(0, 0.6, 0.701961, 0.117647)

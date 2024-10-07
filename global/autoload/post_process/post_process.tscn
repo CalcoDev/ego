@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://cen5haepejl38"]
+
+[ext_resource type="Script" path="res://global/autoload/post_process/post_process.gd" id="1_uduko"]
+[ext_resource type="Shader" path="res://resources/shaders/lens_distortion.gdshader" id="1_vk2yk"]
+[ext_resource type="Shader" path="res://resources/shaders/chromatic_abber.gdshader" id="2_dcvp7"]
+[ext_resource type="Shader" path="res://resources/shaders/vignette.gdshader" id="3_x48gr"]
+[ext_resource type="Shader" path="res://resources/shaders/enemy_inversion.gdshader" id="5_vb8jj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n02qw"]
+shader = ExtResource("1_vk2yk")
+shader_parameter/effect_amount = -0.17
+shader_parameter/outerRadius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eknkd"]
+shader = ExtResource("2_dcvp7")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+shader_parameter/outerRadius = 1.72
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1003s"]
+shader = ExtResource("3_x48gr")
+shader_parameter/outerRadius = 1.664
+shader_parameter/MainAlpha = 0.824
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1j8w"]
+shader = ExtResource("5_vb8jj")
+shader_parameter/shake_power = 0.002
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 0.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.002
+
+[sub_resource type="Gradient" id="Gradient_vv25e"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_410p1"]
+gradient = SubResource("Gradient_vv25e")
+
+[node name="PostProcessing" type="Node2D"]
+process_priority = 999
+z_index = 99
+script = ExtResource("1_uduko")
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="LensDistortion" type="ColorRect" parent="."]
+z_index = 22
+material = SubResource("ShaderMaterial_n02qw")
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="BackBufferCopy3" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="ChromaticAbberation" type="ColorRect" parent="."]
+z_index = 21
+material = SubResource("ShaderMaterial_eknkd")
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Vignette" type="ColorRect" parent="."]
+z_index = 24
+material = SubResource("ShaderMaterial_1003s")
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="BackBufferCopy5" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Glitch" type="TextureRect" parent="."]
+visible = false
+z_index = 25
+material = SubResource("ShaderMaterial_g1j8w")
+offset_right = 480.0
+offset_bottom = 270.0
+texture = SubResource("GradientTexture2D_410p1")

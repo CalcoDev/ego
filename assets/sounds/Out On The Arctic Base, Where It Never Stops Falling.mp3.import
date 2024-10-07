@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqfr6ebfccxbq"
+path="res://.godot/imported/Out On The Arctic Base, Where It Never Stops Falling.mp3-e9f1eb9b82352aed86cc4efa67e22f2f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Out On The Arctic Base, Where It Never Stops Falling.mp3"
+dest_files=["res://.godot/imported/Out On The Arctic Base, Where It Never Stops Falling.mp3-e9f1eb9b82352aed86cc4efa67e22f2f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

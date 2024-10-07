@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://3rwttry7yt7i"]
+
+[ext_resource type="Texture2D" uid="uid://drb5cc0u4mejq" path="res://scenes/objects/sign/sign.png" id="1_jat54"]
+[ext_resource type="Script" path="res://scenes/objects/sign/sign.gd" id="1_l5226"]
+[ext_resource type="Script" path="res://global/autoload/dialogue/dialogue_interaction.gd" id="3_qp2kw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83r08"]
+radius = 13.0
+
+[node name="Sign" type="Node2D"]
+script = ExtResource("1_l5226")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jat54")
+offset = Vector2(0, -6.485)
+
+[node name="Interaction" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_qp2kw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_83r08")

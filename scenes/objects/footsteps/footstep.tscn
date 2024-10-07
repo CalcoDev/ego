@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6b2tlemub4g"]
+
+[ext_resource type="Script" path="res://scenes/objects/footsteps/footstep.gd" id="1_aq04l"]
+[ext_resource type="SpriteFrames" uid="uid://ddhj6q81jnwic" path="res://scenes/objects/footsteps/footstep_spriteframes.tres" id="1_e52aw"]
+[ext_resource type="Texture2D" uid="uid://b12m7bpira6mm" path="res://assets/lights_particles/small dot.png" id="3_nthsg"]
+
+[node name="Footstep" type="Node2D"]
+script = ExtResource("1_aq04l")
+lifetime = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.680317
+sprite_frames = ExtResource("1_e52aw")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+rotation = -0.680317
+energy = 1.87
+texture = ExtResource("3_nthsg")

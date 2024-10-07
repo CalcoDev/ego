@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ddhj6q81jnwic"]
+
+[ext_resource type="Texture2D" uid="uid://bb6ic108kkh7a" path="res://assets/images/footsteps/footsteps.png" id="1_aroc6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjvif"]
+atlas = ExtResource("1_aroc6")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snl03"]
+atlas = ExtResource("1_aroc6")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l7gb"]
+atlas = ExtResource("1_aroc6")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yugo"]
+atlas = ExtResource("1_aroc6")
+region = Rect2(36, 0, 12, 12)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjvif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snl03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l7gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yugo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

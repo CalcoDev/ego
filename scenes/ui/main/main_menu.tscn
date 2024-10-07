@@ -1,0 +1,215 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2fgfptk6d2j0"]
+
+[ext_resource type="Script" path="res://scenes/ui/main/main_menu.gd" id="1_yvggv"]
+
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("main", "play", "settings", "quit", "pause", "back", "music", "sfx")]
+script = ExtResource("1_yvggv")
+main = NodePath("MainMenu")
+play = NodePath("MainMenu/VBoxContainer/Play/Button")
+settings = NodePath("MainMenu/VBoxContainer/Settings/Button")
+quit = NodePath("MainMenu/VBoxContainer/Quit/Button")
+pause = NodePath("SettingsMenu")
+back = NodePath("SettingsMenu/HBoxContainer/Back/Button")
+music = NodePath("SettingsMenu/VBoxContainer/Music/HBox/HSlider")
+sfx = NodePath("SettingsMenu/VBoxContainer/SFX/HBox/HSlider")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 135)
+zoom = Vector2(2.667, 2.667)
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_top = 33.0
+offset_right = 480.0
+offset_bottom = 82.0
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][wave][b]EGO GIVETH[/b][/wave][/center]"
+
+[node name="Subtitle" type="RichTextLabel" parent="."]
+offset_top = 77.0
+offset_right = 480.0
+offset_bottom = 126.0
+theme_override_font_sizes/italics_font_size = 12
+bbcode_enabled = true
+text = "[center][wave][i]and ego taketh away...[/i][/wave][/center]"
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 105.0
+offset_right = 290.0
+offset_bottom = 245.0
+theme_override_constants/separation = 10
+
+[node name="Play" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/VBoxContainer/Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+
+[node name="Settings" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenu/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT
+"
+
+[node name="SettingsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 135.0
+offset_right = 240.0
+offset_bottom = 165.0
+theme_override_constants/separation = 30
+
+[node name="Music" type="Control" parent="SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBox" type="HBoxContainer" parent="SettingsMenu/VBoxContainer/Music"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -11.5
+offset_right = 134.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/Music/HBox"]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/Music/HBox"]
+custom_minimum_size = Vector2(193, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 0.001
+
+[node name="SFX" type="Control" parent="SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBox" type="HBoxContainer" parent="SettingsMenu/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(268, 23)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -11.5
+offset_right = 134.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/SFX/HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX     "
+
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/SFX/HBox"]
+custom_minimum_size = Vector2(193, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 0.001
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 205.0
+offset_right = 290.0
+offset_bottom = 245.0
+theme_override_constants/separation = 40
+
+[node name="Back" type="Control" parent="SettingsMenu/HBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SettingsMenu/HBoxContainer/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
